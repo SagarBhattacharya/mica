@@ -11,6 +11,8 @@ typedef enum {
   INS_SUB,
   INS_MUL,
   INS_DIV,
+  INS_DUP,
+  INS_SWAP,
   INS_PRINT
 } InstructionType;
 
@@ -19,6 +21,15 @@ typedef struct {
   int value;
 } Instruction;
 
+typedef struct machine{
+  int top;
+  int* stack;
+  Instruction* program;
+  int program_length;
+  void (*execute)(struct machine* self);
+  void (*dispose)(struct machine* self);
+} Machine;
+
 #define PUSH(v) {INS_PUSH, v}
 #define POP {INS_POP, 0}
 #define ADD {INS_ADD, 0}
@@ -26,7 +37,9 @@ typedef struct {
 #define MUL {INS_MUL, 0}
 #define DIV {INS_DIV, 0}
 #define PRINT {INS_PRINT, 0}
+#define DUP {INS_DUP, 0}
+#define SWAP {INS_SWAP, 0}
 
-void execute(Instruction* program, int program_length);
+Machine* NewMachine(Instruction* program, int program_length);
 
 #endif
