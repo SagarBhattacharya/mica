@@ -32,6 +32,23 @@ a completion. Although I do wanna complete it.
 | jnz val  | Jump if top is nonzero            |
 | halt     | Halt execution                    |
 
+## Example program
+
+Here’s a short "test.mica" program that prints numbers from 0 to 9:
+
+```pl
+push 0
+dup
+print
+push 1
+add
+dup
+push 10
+cmpe
+jz 1
+halt
+```
+
 ## Planned
 
 - More datatypes (currently works on integers only)
