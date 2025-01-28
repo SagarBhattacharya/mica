@@ -4,9 +4,10 @@
 
 int main(){
   Instruction program[] = {
-    PUSH(20),
-    PUSH(0),
-    DIV,
+    PUSH(5),
+    PUSH(10),
+    PRINT,
+    HALT,
     PRINT,
   };
 
