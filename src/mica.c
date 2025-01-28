@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../includes/instruction_set.h"
+#include "../libs/instruction_set.h"
 
 int main(){
   Instruction program[] = {

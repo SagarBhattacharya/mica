@@ -1,4 +1,4 @@
-#include "../includes/instruction_set.h"
+#include "instruction_set.h"
 
 static void push(Machine* mac, int value) {
   if (mac->top < 1023) {

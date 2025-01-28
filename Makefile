@@ -5,14 +5,13 @@ CFLAGS = -Wall -Wextra -Iinclude
 # Directories
 SRCDIR = src
 LIBDIR = libs
-INCLUDEDIR = include
 BUILDDIR = build
 
 # Files
-SRC = $(SRCDIR)/machina.c
+SRC = $(wildcard $(SRCDIR)/*.c)
 LIBS = $(wildcard $(LIBDIR)/*.c)
-DEPS = $(BUILDDIR)/machina.o $(patsubst $(LIBDIR)/%.c, $(BUILDDIR)/%.o, $(LIBS))
-TARGET = $(BUILDDIR)/machina.exe
+DEPS = $(BUILDDIR)/mica.o $(patsubst $(LIBDIR)/%.c, $(BUILDDIR)/%.o, $(LIBS))
+TARGET = $(BUILDDIR)/mica.exe
 
 # Default target
 all: $(TARGET)
