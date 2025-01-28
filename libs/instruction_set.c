@@ -18,15 +18,17 @@ static int pop(Machine* mac) {
   return mac->stack[mac->top--];
 }
 
-void dispose(Machine* self) {
+void machineDispose(Machine* self) {
   free(self->stack);
+  self->parser->dispose(self->parser);
   free(self);
 }
 
-void execute(Machine* self) {
+void machineExecute(Machine* self) {
+  self->parser->parse(self->parser);
   int a, b;
-  for (int pc = 0; pc < self->program_length; pc++) {
-    Instruction ins = self->program[pc];
+  for (int pc = 0; pc < self->parser->program.length; pc++) {
+    Instruction ins = self->parser->program.instructions[pc];
     switch (ins.type) {
       case INS_NOP:
         break;
@@ -129,7 +131,7 @@ void execute(Machine* self) {
         pc = ins.value - 1;
         break;
       case INS_HALT:
-        pc = self->program_length;
+        pc = self->parser->program.length;
         break;
       default:
         fprintf(stderr, "Unknown instruction\n");
@@ -138,13 +140,12 @@ void execute(Machine* self) {
   }
 }
 
-Machine* NewMachine(Instruction* program, int program_length) {
+Machine* NewMachine(const char* source) {
   Machine* machine = (Machine*) malloc(sizeof(Machine));
   machine->top = -1;
   machine->stack = (int*)calloc(STACK_MAX, sizeof(int));
-  machine->program = program;
-  machine->program_length = program_length;
-  machine->execute = execute;
-  machine->dispose = dispose;
+  machine->parser = NewParser(source);
+  machine->execute = machineExecute;
+  machine->dispose = machineDispose;
   return machine;
 }

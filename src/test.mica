@@ -1,0 +1,5 @@
+push 28
+push 990
+swap
+div
+print
