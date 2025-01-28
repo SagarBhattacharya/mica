@@ -62,6 +62,10 @@ void execute(Machine* self) {
       case INS_DIV:
         a = pop(self);
         b = pop(self);
+        if(a == 0){
+          fprintf(stderr, "Division by zero error\n");
+          exit(EXIT_FAILURE);
+        }
         push(self, b / a);
         break;
       case INS_PRINT:

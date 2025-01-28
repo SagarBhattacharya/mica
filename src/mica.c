@@ -5,8 +5,7 @@
 int main(){
   Instruction program[] = {
     PUSH(20),
-    PUSH(30),
-    SWAP,
+    PUSH(0),
     DIV,
     PRINT,
   };
