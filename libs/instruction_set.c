@@ -30,6 +30,7 @@ void machineExecute(Machine* self) {
   for (int pc = 0; pc < self->parser->program.length; pc++) {
     Instruction ins = self->parser->program.instructions[pc];
     switch (ins.type) {
+      case INS_NUMERIC:
       case INS_NOP:
         break;
       case INS_PUSH:

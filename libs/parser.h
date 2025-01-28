@@ -24,6 +24,7 @@ typedef enum {
   INS_JZ,
   INS_JNZ,
   INS_PRINT,
+  INS_NUMERIC,
   INS_HALT
 } InstructionType;
 

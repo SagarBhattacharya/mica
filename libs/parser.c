@@ -21,6 +21,7 @@ static InstructionType tokToInsMap[] = {
   INS_JZ,
   INS_JNZ,
   INS_PRINT,
+  INS_NUMERIC,
   INS_HALT
 };
 
@@ -63,7 +64,7 @@ void parserParse(Parser* parser){
   Token* current = parser->lexer->tokens;
   while(current != NULL){
     InstructionType type = tokToInsMap[current->type];
-    if(type == INS_PUSH){
+    if(type == INS_PUSH || type == INS_JMP || type == INS_JZ || type == INS_JNZ){
       current = current->next;
       if(current == NULL || current->type != TOK_NUMERIC){
         printf("Error: expected value after PUSH\n");
