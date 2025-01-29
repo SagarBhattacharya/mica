@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../libs/instruction_set.h"
+#include "../libs/vm.h"
 
 int main(){
-  Machine* machine = NewMachine("src/labels.mica");
+  Machine* machine = NewMachine("src/test.mica");
   machine->execute(machine);
   machine->dispose(machine);
   return 0;

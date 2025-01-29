@@ -6,7 +6,7 @@ loop:
   push 1
   add
   dup
-  push 10
+  push 100
   cmpe
   jz loop
   halt

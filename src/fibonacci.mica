@@ -1,0 +1,37 @@
+push 20 # No. of iterations
+
+push 0
+push 1
+
+point2:
+dup2
+add
+dup
+print
+push 1
+swap
+swap2
+swap
+pop
+swap2
+sub
+dup
+push 0
+cmpe
+swap2
+swap
+swap2
+jz point1
+jmp point3
+
+point1:
+swap
+dup
+swap2
+swap
+swap2
+pop
+jmp point2
+
+point3:
+halt
