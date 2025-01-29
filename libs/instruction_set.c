@@ -31,7 +31,10 @@ void machineExecute(Machine* self) {
     Instruction ins = self->parser->program.instructions[pc];
     switch (ins.type) {
       case INS_NUMERIC:
+      case INS_LABEL:
+      case INS_LABEL_REF:
       case INS_NOP:
+        continue;
         break;
       case INS_PUSH:
         push(self, ins.value);

@@ -28,7 +28,9 @@ typedef enum {
   TOK_JNZ,
   TOK_PRINT,
   TOK_NUMERIC,
-  TOK_HALT
+  TOK_HALT,
+  TOK_LABEL,
+  TOK_LABEL_REF,
 } TokenType;
 
 typedef struct token{

@@ -25,12 +25,15 @@ typedef enum {
   INS_JNZ,
   INS_PRINT,
   INS_NUMERIC,
-  INS_HALT
+  INS_HALT,
+  INS_LABEL,
+  INS_LABEL_REF,
 } InstructionType;
 
 typedef struct instruction{
   InstructionType type;
   int value;
+  void (*print) (struct instruction);
 } Instruction;
 
 typedef struct insArr {
@@ -40,9 +43,21 @@ typedef struct insArr {
   void (*dispose)(struct insArr* self);
 } Program;
 
+typedef struct label { 
+  char* name;
+  int index;
+} Label;
+
+typedef struct labels {
+  Label* labels;
+  int length;
+  int capacity;
+} Labels;
+
 typedef struct parser {
   Lexer* lexer;
   Program program;
+  Labels labels;
   void (*dispose)(struct parser* self);
   void (*parse)(struct parser* self);
 } Parser;

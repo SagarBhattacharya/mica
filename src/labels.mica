@@ -1,0 +1,10 @@
+jmp again
+
+again:
+  push 5
+  jmp main
+
+main:
+  push 5
+  add
+  print

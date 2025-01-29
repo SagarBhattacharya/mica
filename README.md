@@ -8,6 +8,12 @@ a completion. Although I do wanna complete it.
 - Simple Instruction Set
 - Custom assembly
 
+## ChangeLog
+
+- Added labels support in micaAsm
+- Added common instructions to micaAsm
+- Added Assembly Support for micaVM
+
 ## Opcodes
 | Opcode   | Description                       |
 |----------|-----------------------------------|
@@ -52,7 +58,6 @@ halt
 ## Planned
 
 - More datatypes (currently works on integers only)
-- support of label in mica assmebly
 - including syscalls
 
 
